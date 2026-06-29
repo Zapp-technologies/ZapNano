@@ -1,22 +1,18 @@
 # ZapNano
 
-A terminal text editor written in Rust.
+[![GitHub Release](https://img.shields.io/github/v/release/Zapp-technologies/ZapNano)](https://github.com/Zapp-technologies/ZapNano/releases)
 
-```
-  ______               _   _
- |__  /               | \ | |
-    / /  __ _  _ __   |  \| |  __ _  _ __    ___
-   / /  / _` || '_ \  | . ` | / _` || '_ \  / _ \
-  / /__| (_| || |_) | | |\  || (_| || | | || (_) |
- /_____|\__,_|| .__/  |_| \_| \__,_||_| |_| \___/
-              | |
-              |_|
-```
+![ZapNano Screenshot](https://raw.githubusercontent.com/Zapp-technologies/zaptechnologies/main/assets/images/ZapNano/mainImage.png)
+**A terminal text editor written in Rust.**
 
 
-## What it is
+## Features
 
-ZapNano runs in the terminal. It supports multiple tabs, undo and redo, text selection, search, a file explorer, and a Lua-based extension system for syntax highlighting and code snippets. Themes are TOML files that control the interface colors.
+- **Multi-Tab Interface** – Open and manage multiple files simultaneously.
+- **Lua-Based Extension System** – Flexible syntax highlighting and snippets via Lua scripts.
+- **Built-in File Explorer** – Navigate your workspace natively within the editor.
+- **Editing Essentials** – Undo/redo support, visual text selection, and in-buffer search.
+- **Customizable Themes** – Control interface colors easily using simple TOML files.
 
 
 ## Building
