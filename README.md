@@ -33,7 +33,7 @@ The release binary ends up at `target/release/zapnano` on Linux and macOS, `targ
 
 ## Installation
 
-Pre-packaged installers are available for both Windows and Linux to install `zapnano` directly to your local user environment, along with a `znano` alias script and bundled extensions.
+Pre-packaged installers are available for both Windows and Linux on the [Releases page](https://github.com/Zapp-technologies/ZapNano/releases). They install `zapnano` directly to your local user environment, along with a `znano` alias script and bundled extensions.
 
 **Windows:**
 Compile the `installerWindows/zapnano.iss` script using the Inno Setup Compiler (`ISCC.exe`) to generate `zapnano_setup.exe`. Run the setup executable to install ZapNano on your system without requiring administrator privileges.
@@ -152,14 +152,14 @@ disabled_extensions  = []
 
 ## Documentation
 
-`architecture.md` — how the code is structured and how each subsystem works.
+[`architecture.md`](Docs/architecture.md) — how the code is structured and how each subsystem works.
 
-`reference.md` — full user reference including all keybindings, commands, and settings.
+[`reference.md`](Docs/reference.md) — full user reference including all keybindings, commands, and settings.
 
-`themes-and-extensions.md` — how to write extensions and themes, the full Lua API, all accepted color names, and the built-in extension snippet lists.
+[`themes-and-extensions.md`](Docs/themes-and-extensions.md) — how to write extensions and themes, the full Lua API, all accepted color names, and the built-in extension snippet lists.
 
-`plugin-internals.md` — implementation details of the Lua runtime integration for contributors.
+[`plugin-internals.md`](Docs/plugin-internals.md) — implementation details of the Lua runtime integration for contributors.
 
-`building.md` — build requirements, project layout, dependencies, and notes on extending the editor.
+[`building.md`](Docs/building.md) — build requirements, project layout, dependencies, and notes on extending the editor.
 
-`Changelogs/` — release notes and project history.
+[`Changelogs/`](Docs/Changelogs/) — release notes and project history.
