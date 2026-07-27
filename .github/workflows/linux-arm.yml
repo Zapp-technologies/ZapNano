@@ -21,8 +21,9 @@ jobs:
 
       - name: Setup Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
-        with:
-          targets: aarch64-unknown-linux-gnu
+
+      - name: Install Target
+        run: rustup target add aarch64-unknown-linux-gnu
 
       - name: Build Release Binary
         env:
