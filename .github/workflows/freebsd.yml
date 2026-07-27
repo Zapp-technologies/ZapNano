@@ -20,7 +20,7 @@ jobs:
           usesh: true
           prepare: |
             pkg update
-            pkg install -y rust cargo
+            pkg install -y rust
           run: |
             cargo test
             cargo build --release
