@@ -3,6 +3,11 @@
 ![ZapNano Screenshot](https://raw.githubusercontent.com/Zapp-technologies/zaptechnologies/main/assets/images/ZapNano/mainImage.png)
 [![GitHub Release](https://img.shields.io/github/v/release/Zapp-technologies/ZapNano)](https://github.com/Zapp-technologies/ZapNano/releases)
 [![GitHub Stars](https://img.shields.io/github/stars/Zapp-technologies/ZapNano)](https://github.com/Zapp-technologies/ZapNano/stargazers)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat-square&logo=windows&logoColor=white)
+![macOS](https://img.shields.io/badge/macOS-000000?style=flat-square&logo=apple&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+![FreeBSD](https://img.shields.io/badge/FreeBSD-AB2B28?style=flat-square&logo=freebsd&logoColor=white)
+![Illumos](https://img.shields.io/badge/Illumos-F7931E?style=flat-square)
 ## A terminal text editor written in Rust.
 
 ## Supported Platforms
