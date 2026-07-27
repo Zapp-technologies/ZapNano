@@ -13,7 +13,7 @@
 ## Supported Platforms
 
 ZapNano runs natively and compiles for the following platforms:
-- **Windows** (x64)
+- **Windows** (x64 and ARM64)
 - **macOS** (Apple Silicon/ARM64 and Intel/x86_64)
 - **Linux** (x86_64 and ARM64)
 - **FreeBSD** (x86_64)
