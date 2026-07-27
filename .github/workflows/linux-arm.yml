@@ -1,4 +1,4 @@
-name: CI Linux
+name: CI Linux ARM
 
 on:
   push:
@@ -7,29 +7,35 @@ on:
     branches: [ "master", "main" ]
 
 jobs:
-  build-linux:
-    name: Build & Test (Linux)
+  build-linux-arm:
+    name: Build & Test (Linux ARM64)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Cross Compiler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-aarch64-linux-gnu
+
       - name: Setup Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
-
-      - name: Run Tests
-        run: cargo test
+        with:
+          targets: aarch64-unknown-linux-gnu
 
       - name: Build Release Binary
-        run: cargo build --release
+        env:
+          CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
+        run: cargo build --release --target aarch64-unknown-linux-gnu
 
       - name: Create Release Tarball
         run: |
           chmod +x distribution/linux/build_tarball.sh
           ./distribution/linux/build_tarball.sh
 
-      - name: Upload Linux Package
+      - name: Upload Linux ARM Package
         uses: actions/upload-artifact@v4
         with:
-          name: zapnano-linux-x86_64
+          name: zapnano-linux-arm64
           path: distribution/linux/dist/*.tar.gz

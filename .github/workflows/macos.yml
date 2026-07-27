@@ -8,8 +8,11 @@ on:
 
 jobs:
   build-macos:
-    name: Build & Test (macOS)
-    runs-on: macos-latest
+    name: Build & Test (macOS - ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, macos-13]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,11 +28,11 @@ jobs:
 
       - name: Create Release Tarball
         run: |
-          chmod +x installerMacOS/build_tarball.sh
-          ./installerMacOS/build_tarball.sh
+          chmod +x distribution/macOS/build_tarball.sh
+          ./distribution/macOS/build_tarball.sh
 
       - name: Upload macOS Package
         uses: actions/upload-artifact@v4
         with:
-          name: zapnano-macos
-          path: installerMacOS/dist/*.tar.gz
+          name: zapnano-macos-${{ matrix.os }}
+          path: distribution/macOS/dist/*.tar.gz

@@ -16,22 +16,23 @@ if [ ! -f "target/release/zapnano" ]; then
 fi
 
 echo "Cleaning and preparing dist directory..."
-rm -rf "installerMacOS/dist/"
-mkdir -p "installerMacOS/$DIST_DIR/resources"
+rm -rf "distribution/macOS/dist/"
+mkdir -p "distribution/macOS/$DIST_DIR/resources"
 
 echo "Copying binary..."
-cp "target/release/zapnano" "installerMacOS/$DIST_DIR/"
+cp "target/release/zapnano" "distribution/macOS/$DIST_DIR/"
 
-echo "Copying resources..."
-cp -r "installerWindows/resources/"* "installerMacOS/$DIST_DIR/resources/"
-cp -r "extensions" "installerMacOS/$DIST_DIR/resources/"
+if [ -d "extensions" ]; then
+    echo "Copying extensions..."
+    cp -r "extensions" "distribution/macOS/$DIST_DIR/resources/"
+fi
 
 echo "Copying installer script..."
-cp "installerMacOS/install.sh" "installerMacOS/$DIST_DIR/"
-chmod +x "installerMacOS/$DIST_DIR/install.sh"
+cp "distribution/macOS/install.sh" "distribution/macOS/$DIST_DIR/"
+chmod +x "distribution/macOS/$DIST_DIR/install.sh"
 
 echo "Archiving into .tar.gz..."
-cd "installerMacOS/dist"
+cd "distribution/macOS/dist"
 tar -czvf "$DIST_NAME.tar.gz" "$DIST_NAME"
 
-echo "Distribution package ready at: installerMacOS/dist/$DIST_NAME.tar.gz"
+echo "Distribution package ready at: distribution/macOS/dist/$DIST_NAME.tar.gz"

@@ -21,22 +21,23 @@ else
 fi
 
 echo "Cleaning and preparing dist directory..."
-rm -rf "installerFreeBSD/dist/"
-mkdir -p "installerFreeBSD/$DIST_DIR/resources"
+rm -rf "distribution/freeBSD/dist/"
+mkdir -p "distribution/freeBSD/$DIST_DIR/resources"
 
 echo "Copying binary..."
-cp "$BINARY" "installerFreeBSD/$DIST_DIR/"
+cp "$BINARY" "distribution/freeBSD/$DIST_DIR/"
 
-echo "Copying resources..."
-cp -r "installerWindows/resources/"* "installerFreeBSD/$DIST_DIR/resources/"
-cp -r "extensions" "installerFreeBSD/$DIST_DIR/resources/"
+if [ -d "extensions" ]; then
+    echo "Copying extensions..."
+    cp -r "extensions" "distribution/freeBSD/$DIST_DIR/resources/"
+fi
 
 echo "Copying installer script..."
-cp "installerFreeBSD/install.sh" "installerFreeBSD/$DIST_DIR/"
-chmod +x "installerFreeBSD/$DIST_DIR/install.sh"
+cp "distribution/freeBSD/install.sh" "distribution/freeBSD/$DIST_DIR/"
+chmod +x "distribution/freeBSD/$DIST_DIR/install.sh"
 
 echo "Archiving into .tar.gz..."
-cd "installerFreeBSD/dist"
+cd "distribution/freeBSD/dist"
 tar -czvf "$DIST_NAME.tar.gz" "$DIST_NAME"
 
-echo "Distribution package ready at: installerFreeBSD/dist/$DIST_NAME.tar.gz"
+echo "Distribution package ready at: distribution/freeBSD/dist/$DIST_NAME.tar.gz"

@@ -1,0 +1,35 @@
+name: CI Illumos
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+
+jobs:
+  build-illumos:
+    name: Build & Test (Illumos - x86_64)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Cross
+        run: |
+          mkdir -p ~/.cargo/bin
+          curl -L https://github.com/cross-rs/cross/releases/download/v0.2.5/cross-x86_64-unknown-linux-musl.tar.gz | tar xz -C ~/.cargo/bin
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Build for Illumos
+        run: cross build --target x86_64-unknown-illumos --release
+
+      - name: Create Release Tarball
+        run: |
+          chmod +x distribution/illumos/build_tarball.sh
+          ./distribution/illumos/build_tarball.sh
+
+      - name: Upload Illumos Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: zapnano-illumos-x86_64
+          path: distribution/illumos/dist/*.tar.gz

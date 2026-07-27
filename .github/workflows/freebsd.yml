@@ -24,11 +24,11 @@ jobs:
           run: |
             cargo test
             cargo build --release
-            chmod +x installerFreeBSD/build_tarball.sh
-            ./installerFreeBSD/build_tarball.sh
+            chmod +x distribution/freeBSD/build_tarball.sh
+            ./distribution/freeBSD/build_tarball.sh
 
       - name: Upload FreeBSD Package
         uses: actions/upload-artifact@v4
         with:
           name: zapnano-freebsd-x86_64
-          path: installerFreeBSD/dist/*.tar.gz
+          path: distribution/freeBSD/dist/*.tar.gz
