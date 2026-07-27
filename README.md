@@ -1,21 +1,18 @@
 # ZapNano
 
-[![GitHub Release](https://img.shields.io/github/v/release/Zapp-technologies/ZapNano)](https://github.com/Zapp-technologies/ZapNano/releases)
-
-A terminal text editor written in Rust.
-
-```
-  ______               _   _
- |__  /               | \ | |
-    / /  __ _  _ __   |  \| |  __ _  _ __    ___
-   / /  / _` || '_ \  | . ` | / _` || '_ \  / _ \
-  / /__| (_| || |_) | | |\  || (_| || | | || (_) |
- /_____|\__,_|| .__/  |_| \_| \__,_||_| |_| \___/
-              | |
-              |_|
-```
-
 ![ZapNano Screenshot](https://raw.githubusercontent.com/Zapp-technologies/zaptechnologies/main/assets/images/ZapNano/mainImage.png)
+[![GitHub Release](https://img.shields.io/github/v/release/Zapp-technologies/ZapNano)](https://github.com/Zapp-technologies/ZapNano/releases)
+[![GitHub Stars](https://img.shields.io/github/stars/Zapp-technologies/ZapNano)](https://github.com/Zapp-technologies/ZapNano/stargazers)
+## A terminal text editor written in Rust.
+
+## Supported Platforms
+
+ZapNano runs natively and compiles for the following platforms:
+- **Windows** (x64)
+- **macOS** (Apple Silicon/ARM64 and Intel/x86_64)
+- **Linux** (x86_64 and ARM64)
+- **FreeBSD** (x86_64)
+- **Illumos** (Solarish x86_64 distributions)
 
 ## Features
 
