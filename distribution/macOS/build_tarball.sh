@@ -8,7 +8,7 @@ DIST_DIR="dist/$DIST_NAME"
 
 echo "Packaging ZapNano $VERSION for macOS ($ARCH)..."
 
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 
 if [ ! -f "target/release/zapnano" ]; then
     echo "Building release binary..."

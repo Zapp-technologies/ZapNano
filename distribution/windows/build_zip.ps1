@@ -8,7 +8,7 @@ Write-Host "Packaging ZapNano $Version for Windows ($Arch)..."
 
 # Ensure we are in root directory
 Push-Location (Split-Path -Parent $MyInvocation.MyCommand.Path)
-cd ..
+cd ..\..
 
 # Build release if not built
 if (!(Test-Path "target\release\zapnano.exe") -and !(Test-Path "target\$env:CARGO_BUILD_TARGET\release\zapnano.exe")) {

@@ -7,7 +7,7 @@ DIST_DIR="dist/$DIST_NAME"
 
 echo "Packaging ZapNano $VERSION for Linux..."
 
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 
 # Check if we built in the standard release path or cross linux path
 if [ -f "target/aarch64-unknown-linux-gnu/release/zapnano" ]; then

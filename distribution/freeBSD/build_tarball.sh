@@ -7,7 +7,7 @@ DIST_DIR="dist/$DIST_NAME"
 
 echo "Packaging ZapNano $VERSION for FreeBSD..."
 
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 
 # Check if we built in the standard release path or cross freebsd path
 if [ -f "target/x86_64-unknown-freebsd/release/zapnano" ]; then
