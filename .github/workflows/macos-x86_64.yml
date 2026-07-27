@@ -9,24 +9,26 @@ on:
 jobs:
   build-macos-x86_64:
     name: Build & Test (macOS x86_64)
-    runs-on: macos-13
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          target: x86_64-apple-darwin
 
       - name: Run Tests
-        run: cargo test
+        run: cargo test --target x86_64-apple-darwin
 
       - name: Build Release Binary
-        run: cargo build --release
+        run: cargo build --release --target x86_64-apple-darwin
 
       - name: Create Release Tarball
         run: |
           chmod +x distribution/macOS/build_tarball.sh
-          ./distribution/macOS/build_tarball.sh
+          ARCH=x86_64 ./distribution/macOS/build_tarball.sh
 
       - name: Upload macOS Package
         uses: actions/upload-artifact@v4

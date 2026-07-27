@@ -42,13 +42,23 @@ try {
     "@`"$BIN_DIR\znano.cmd`" %*" | Out-File -FilePath "$USER_BIN\znano.cmd" -Encoding ascii -Force
 }
 
-Write-Host "[4/4] Finalizing Paths..."
-$ParsedPath = $env:PATH -split ';' | ForEach-Object { $_.TrimEnd('\') }
-$CleanUserBin = $USER_BIN.TrimEnd('\')
-if ($ParsedPath -notcontains $CleanUserBin) {
-    Write-Host "Notice: $USER_BIN is not in your PATH."
-    Write-Host "Recommended: Add the following line to your PowerShell `$PROFILE:"
-    Write-Host "  `\$env:Path = `"$USER_BIN;``\$env:Path`""
+$UserPath = [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::User)
+$ParsedUserPath = $UserPath -split ';' | ForEach-Object { $_.TrimEnd('\') }
+
+if ($ParsedUserPath -notcontains $CleanUserBin) {
+    Write-Host "Adding $USER_BIN to User PATH..."
+    try {
+        $NewUserPath = if ($UserPath -and $UserPath.Trim()) { "$UserPath;$USER_BIN" } else { $USER_BIN }
+        [Environment]::SetEnvironmentVariable("Path", $NewUserPath, [EnvironmentVariableTarget]::User)
+        $env:Path = "$USER_BIN;$env:Path"
+        Write-Host "User PATH updated successfully. Restart your terminal session for changes to propagate fully."
+    } catch {
+        Write-Host "Notice: Could not automatically update PATH: $_"
+        Write-Host "Recommended: Add the following line to your PowerShell `$PROFILE:"
+        Write-Host "  `$env:Path = `"$USER_BIN;`$env:Path`""
+    }
+} else {
+    Write-Host "$USER_BIN is already in your PATH."
 }
 
 Write-Host "Installation complete."
