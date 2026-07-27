@@ -1,0 +1,35 @@
+name: CI macOS
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+
+jobs:
+  build-macos:
+    name: Build & Test (macOS)
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Run Tests
+        run: cargo test
+
+      - name: Build Release Binary
+        run: cargo build --release
+
+      - name: Create Release Tarball
+        run: |
+          chmod +x installerMacOS/build_tarball.sh
+          ./installerMacOS/build_tarball.sh
+
+      - name: Upload macOS Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: zapnano-macos
+          path: installerMacOS/dist/*.tar.gz

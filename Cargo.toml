@@ -1,0 +1,21 @@
+[package]
+name = "zapnano"
+version = "0.2.0"
+edition = "2021"
+
+[dependencies]
+ratatui = "0.26.3"
+crossterm = "0.28.1"
+ropey = "1.6.1"
+tree-sitter = "0.22.6"
+tree-sitter-highlight = "0.22.6"
+tree-sitter-rust = "0.21.2"
+anyhow = "1.0.86"
+mlua = { version = "0.9.9", features = ["lua54", "vendored"] }
+regex = "1.10.5"
+serde = { version = "1.0.228", features = ["derive"] }
+toml = "1.1.2"
+dirs = "6.0.0"
+
+[build-dependencies]
+winres = "0.1.12"

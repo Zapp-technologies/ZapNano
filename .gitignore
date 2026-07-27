@@ -1,0 +1,22 @@
+# Rust
+/target/
+**/*.rs.bk
+
+installerWindows/bin/
+installerWindows/Output/
+installerWindows/zapnano_setup.exe
+installerLinux/dist/
+
+*.exe
+*.dll
+*.so
+*.dylib
+*.cmd
+*.bat
+
+
+*.log
+debug_ext.log
+
+.DS_Store
+Thumbs.db

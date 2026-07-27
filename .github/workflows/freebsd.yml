@@ -1,0 +1,34 @@
+name: CI FreeBSD
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+
+jobs:
+  build-freebsd:
+    name: Build & Test (FreeBSD)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build and Package inside FreeBSD VM
+        uses: vmactions/freebsd-vm@v1
+        with:
+          usesh: true
+          prepare: |
+            pkg update
+            pkg install -y rust cargo
+          run: |
+            cargo test
+            cargo build --release
+            chmod +x installerFreeBSD/build_tarball.sh
+            ./installerFreeBSD/build_tarball.sh
+
+      - name: Upload FreeBSD Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: zapnano-freebsd-x86_64
+          path: installerFreeBSD/dist/*.tar.gz
