@@ -22,19 +22,19 @@ fi
 
 echo "Cleaning and preparing dist directory..."
 rm -rf "distribution/linux/dist/"
-mkdir -p "$DIST_DIR/resources"
+mkdir -p "distribution/linux/$DIST_DIR/resources"
 
 echo "Copying binary..."
-cp "$BINARY" "$DIST_DIR/"
+cp "$BINARY" "distribution/linux/$DIST_DIR/"
 
 if [ -d "extensions" ]; then
     echo "Copying extensions..."
-    cp -r "extensions" "$DIST_DIR/resources/"
+    cp -r "extensions" "distribution/linux/$DIST_DIR/resources/"
 fi
 
 echo "Copying installer script..."
-cp "distribution/linux/install.sh" "$DIST_DIR/"
-chmod +x "$DIST_DIR/install.sh"
+cp "distribution/linux/install.sh" "distribution/linux/$DIST_DIR/"
+chmod +x "distribution/linux/$DIST_DIR/install.sh"
 
 echo "Archiving into .tar.gz..."
 cd "distribution/linux/dist"
